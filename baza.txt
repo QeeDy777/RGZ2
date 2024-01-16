@@ -1,0 +1,18 @@
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Создание таблицы questionary
+CREATE TABLE IF NOT EXISTS questionary (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) REFERENCES users(username) ON DELETE CASCADE,
+    age INTEGER,
+    gender VARCHAR(255),
+    search_gender VARCHAR(255),
+    about_me TEXT,
+    photo VARCHAR(255),
+    is_visible BOOLEAN DEFAULT TRUE
+);
